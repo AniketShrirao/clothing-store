@@ -8,7 +8,7 @@ import { ReactComponent as Logo } from '../../assets/logo.svg';
 
 import './header.style.scss';
 
-const Header = ({currentUser})=> (
+const Header = ({ currentUser }) => (
     <div className='header'>
         <Link className='logo-container' to='/'>
             <Logo className='logo' title='Clothing Store'/>
@@ -32,10 +32,10 @@ const Header = ({currentUser})=> (
             )}
         </div>
     </div>
-)
+);
 
 const mapStateToProps = state => ({
-    state: state.user.currentUser
+    currentUser : state.user.currentUser
 });
 
 export default connect(mapStateToProps)(Header);
