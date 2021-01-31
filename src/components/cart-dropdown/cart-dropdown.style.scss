@@ -10,6 +10,19 @@
     top: 90px;
     right: 40px;
     z-index: 5;
+
+    .empty-message {
+      display: flex;
+      justify-content: center;
+      align-items: center; 
+      flex-direction: column;
+      margin: auto;
+
+      .empty {
+        color: red;
+        font-weight: 900;
+      }
+    }
   
     .cart-items {
       height: 240px;
