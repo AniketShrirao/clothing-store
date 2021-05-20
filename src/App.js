@@ -13,6 +13,7 @@ import {auth, createUserProfileDocument} from './components/firebase/firebase.ut
 import { setCurrentUser } from './redux/user/user.action';
 import {selectCurrentUser} from './redux/user/user.selectors';
 import {createStructuredSelector} from 'reselect';
+import Contact from './components/contact/contact.component';
 
 class App extends React.Component {
 
@@ -49,6 +50,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
+          <Route path='/contact' component={Contact} />
           <Route path='/checkout' component={CheckoutPage} />
           <Route 
             exact 
