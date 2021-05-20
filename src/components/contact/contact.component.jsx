@@ -1,33 +1,31 @@
 import React from 'react';
 import FormInput from '../form-inputs/form-input.component';
-import { auth, signInWithGoogle } from '../firebase/firebase.utils';
 import CustomButton from '../custom-button/custom-button.components';
+import ThankyouImageSrc  from "../../assets/thankyou.jpg";
 
 
 import {
-  SignInContainer,
-  SignInTitle,
+  ContactFormContainer,
+  ContactWrapperContainer,
+  ThankYouContainer,
+  ContactFormTitle,
   ButtonsBarContainer
-} from './sign-in.style';
+} from './contact.style';
 
-class SignIn extends React.Component {
+class Contact extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       email: '',
-      password: ''
+      message: ''
     };
   }
 
   handleSubmit = async event => {
     event.preventDefault();
-
-    const { email, password } = this.state;
-
     try {
-      await auth.signInWithEmailAndPassword(email, password);
-      this.setState({ email: '', password: '' });
+      this.setState({ email: '', message: '' });
     } catch (error) {
       console.log(error);
     }
@@ -41,9 +39,10 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <SignInContainer>
-        <SignInTitle>I already have an account</SignInTitle>
-        <span>Sign in with your email and password</span>
+    <ContactWrapperContainer>        
+      <ContactFormContainer>
+        <ContactFormTitle>Contact Us</ContactFormTitle>
+        <span>please feel free to contact us for any inquiries</span>
 
         <form onSubmit={this.handleSubmit}>
           <FormInput
@@ -55,23 +54,24 @@ class SignIn extends React.Component {
             required
           />
           <FormInput
-            name='password'
-            type='password'
-            value={this.state.password}
+            name='message'
+            type='message'
+            value={this.state.message}
             handleChange={this.handleChange}
-            label='password'
+            label='message'
             required
           />
           <ButtonsBarContainer>
-            <CustomButton type='submit'> Sign in </CustomButton>
-            <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
-              Sign in with Google
-            </CustomButton>
+            <CustomButton type='submit'> Submit </CustomButton>
           </ButtonsBarContainer>
         </form>
-      </SignInContainer>
+      </ContactFormContainer>
+      <ThankYouContainer>
+        <img src={ ThankyouImageSrc } alt="thank you"/>
+      </ThankYouContainer>
+    </ContactWrapperContainer>
     );
   }
 }
 
-export default SignIn;
+export default Contact;
