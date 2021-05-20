@@ -1,13 +1,19 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import { WarningContainer } from '../../pages/checkout/checkout.style';
 
-const StripeCheckoutButton = ({price}) => {
+const StripeCheckoutButton = ({price,clearItem,cartItems}) => {
     const priceForStripe = price * 100;
     const publishableKey = 'pk_test_51IG0cDE1Deg4TbqoZEY0iYmPCP2diUttuEnWpTFn3MwXL8XiMx2fveZ2VrhL5mCWFpL8HXGgRX8GW6k1vzREbG3L00EccfVeYi';
 
     const onToken = token => {
-        console.log(token);
-        alert('Payment Successful');
+        // eslint-disable-next-line array-callback-return
+        cartItems.map(cartItem => {clearItem(cartItem)});
+        return (
+       <WarningContainer>
+        *Thank You For Shopping*
+      </WarningContainer>
+        );
     }
 
     return (
